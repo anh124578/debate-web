@@ -101,9 +101,8 @@ button {
   font-size: 3.5rem;
   margin-bottom: 0.8rem;
   box-shadow: 0 0 14px rgba(34, 211, 238, 0.08);
-
   position: relative;
-  top: -110px;
+  top: -90px;
 }
 
 .logo-light-system {
@@ -114,7 +113,6 @@ button {
   align-items: center;
   justify-content: center;
   margin: -1rem -1.4rem;
-  
 }
 
 .logo-ring {
@@ -199,6 +197,7 @@ button {
   margin-top: 4rem;
   margin-bottom: 1.2rem;
 }
+
 .title-main {
   font-size: clamp(4.8rem, 9vw, 8rem);
   font-weight: 900;
@@ -212,12 +211,14 @@ button {
   align-items: baseline;
   gap: 0.6rem;
   margin-top: 2.4rem;
+  flex-direction: row;
 }
 
 .title-word-1,
 .title-word-2 {
   white-space: nowrap;
   flex-shrink: 0;
+  display: inline-block;
 }
 
 .title-word-1 {
@@ -242,37 +243,6 @@ button {
   margin-top: 2rem;
   font-weight: 600;
 }
-.title-main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25em;
-}
-
-.title-word-1,
-.title-word-2 {
-  display: inline-block;
-}
-
-.start-button {
-  margin-top: 2rem;
-  padding: 0.95rem 1.9rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #22d3ee, #3b82f6);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  box-shadow: 0 10px 28px rgba(34, 211, 238, 0.22);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.start-button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 14px 34px rgba(34, 211, 238, 0.28);
-}
 
 /* menu */
 .menu-layout {
@@ -284,90 +254,280 @@ button {
 
 .menu-header {
   text-align: center;
-  margin-bottom: 3.3rem;
+  margin-bottom: 2.8rem;
   width: 100%;
 }
 
 .menu-header h2 {
-  font-size: clamp(2.8rem, 4.8vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(3.4rem, 5.4vw, 5.6rem);
+  font-weight: 900;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.04em;
   color: #ffffff;
   text-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
 }
 
 .menu-header p {
   color: var(--text-muted);
-  font-size: 1.12rem;
+  font-size: 1.35rem;
   letter-spacing: 0.03em;
 }
 
-.grid-cards {
+.single-level-board {
+  width: min(1360px, 100%);
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.6rem;
-  max-width: 1380px;
-  width: 90%;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.2rem;
 }
 
-.card-btn {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1;
-  border-radius: 1.7rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035));
+.round-select-card {
+  min-height: 360px;
+  border-radius: 2.25rem;
+  padding: 2.6rem 2.8rem;
+  text-align: left;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-main);
+  backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
-  backdrop-filter: blur(10px);
 }
 
-.card-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.5s ease;
+.round-select-card:hover {
+  transform: translateY(-8px) scale(1.015);
 }
 
-.card-btn:hover {
-  transform: translateY(-8px) scale(1.03);
+.semifinal-select {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.2), rgba(30, 58, 138, 0.24));
+}
+
+.final-select {
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.18), rgba(124, 45, 18, 0.26));
+}
+
+.semifinal-select:hover {
   border-color: rgba(96, 165, 250, 0.42);
   box-shadow: 0 18px 36px rgba(59, 130, 246, 0.18);
 }
 
-.card-btn:hover::after {
-  left: 145%;
+.final-select:hover {
+  border-color: rgba(251, 191, 36, 0.42);
+  box-shadow: 0 18px 36px rgba(245, 158, 11, 0.18);
 }
 
-.card-number {
-  position: relative;
-  z-index: 1;
-  font-size: 5.5rem;
+.round-select-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 48px;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.18);
+  border: 1px solid rgba(147, 197, 253, 0.26);
+  color: #dbeafe;
+  font-size: 1.08rem;
   font-weight: 900;
-  color: #ffffff;
-  line-height: 1;
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
 }
 
-.card-label {
+.final-select-pill {
+  background: rgba(251, 191, 36, 0.18);
+  border: 1px solid rgba(253, 224, 71, 0.28);
+  color: #fef3c7;
+}
+
+.round-select-card h3 {
+  font-size: clamp(2.8rem, 3.2vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  line-height: 1.08;
+}
+
+.round-select-card p {
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+
+/* submenu */
+.round-detail-wrap {
+  width: min(1120px, 100%);
+  border-radius: 2.2rem;
+  padding: 2rem 1.8rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(16px);
+  background: linear-gradient(180deg, rgba(10, 18, 44, 0.82), rgba(5, 10, 28, 0.9));
+}
+
+.round-detail-head {
+  text-align: center;
+  margin-bottom: 1.8rem;
   position: relative;
-  z-index: 1;
-  margin-top: 0.8rem;
-  font-size: 1.5rem;
-  color: #b8f7ff;
+  padding-top: 0.2rem;
+}
+
+.sub-back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
   font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.sub-back-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-3px);
+}
+
+.round-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.18);
+  border: 1px solid rgba(147, 197, 253, 0.26);
+  color: #dbeafe;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  margin-bottom: 1.2rem;
+}
+
+.final-pill {
+  background: rgba(251, 191, 36, 0.18);
+  border: 1px solid rgba(253, 224, 71, 0.28);
+  color: #fef3c7;
+}
+
+.round-detail-head h3 {
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+  color: #ffffff;
+}
+
+.round-detail-head p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-size: 1.18rem;
+}
+
+.round-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-list {
+  width: 100%;
+}
+
+.final-list {
+  justify-content: center;
+}
+
+.question-card {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.question-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.semifinal-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(147, 197, 253, 0.2);
+}
+
+.semifinal-card:hover {
+  border-color: rgba(96, 165, 250, 0.42);
+  box-shadow: 0 18px 36px rgba(59, 130, 246, 0.18);
+}
+
+.final-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(253, 224, 71, 0.22);
+}
+
+.final-card:hover {
+  border-color: rgba(251, 191, 36, 0.42);
+  box-shadow: 0 18px 36px rgba(245, 158, 11, 0.18);
+}
+
+.hidden-question-card {
+  min-height: 120px;
+}
+
+.question-index {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  font-weight: 900;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+.final-index {
+  color: #b45309;
+}
+
+.question-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.question-tag {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8f7ff;
+}
+
+.final-card .question-tag {
+  color: #fde68a;
+}
+
+.question-title-only {
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  line-height: 1.4;
+  font-weight: 800;
+  color: #ffffff;
 }
 
 /* arena */
@@ -422,6 +582,12 @@ button {
   margin-bottom: 1.3rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.arena-badge-final {
+  color: #fef3c7;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(253, 224, 71, 0.2);
 }
 
 .arena-question {
@@ -561,13 +727,6 @@ button {
   color: #ffffff;
 }
 
-.time-separator {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #ffffff;
-  opacity: 0.9;
-}
-
 .main-controls {
   display: flex;
   align-items: center;
@@ -618,27 +777,61 @@ button {
   margin-left: 4px;
 }
 
+/* video */
+.final-video-wrap {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.final-video-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.final-video-player {
+  width: min(900px, 100%);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* responsive */
-@media (max-width: 1280px) {
-  .grid-cards {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1.2rem;
+@media (max-width: 1180px) {
+  .single-level-board {
+    grid-template-columns: 1fr;
+    width: min(900px, 100%);
   }
 
-  .card-number {
-    font-size: 4.5rem;
+  .round-select-card {
+    min-height: 280px;
   }
 }
 
 @media (max-width: 1024px) {
-  .grid-cards {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .control-deck {
     flex-direction: column;
     gap: 1.2rem;
     padding: 1rem;
+  }
+
+  .menu-header h2 {
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+  }
+
+  .menu-header p {
+    font-size: 1.1rem;
   }
 }
 
@@ -647,12 +840,27 @@ button {
     padding: 1rem;
   }
 
-  .grid-cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .menu-header {
+    margin-bottom: 1.8rem;
   }
 
-  .menu-header {
-    margin-bottom: 2.2rem;
+  .round-select-card {
+    min-height: 240px;
+    padding: 2rem;
+  }
+
+  .round-select-pill {
+    width: 150px;
+    height: 44px;
+    font-size: 0.95rem;
+  }
+
+  .round-select-card h3 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .round-select-card p {
+    font-size: 1.05rem;
   }
 
   .title-school {
@@ -676,26 +884,24 @@ button {
   .arena-bottom {
     padding-bottom: 1rem;
   }
+
+  .question-card {
+    padding: 1rem;
+  }
+
+  .question-index {
+    width: 52px;
+    height: 52px;
+    font-size: 1.2rem;
+  }
+
+  .sub-back-btn {
+    position: static;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 560px) {
-  .grid-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-  }
-
-  .card-btn {
-    border-radius: 1.2rem;
-  }
-
-  .card-number {
-    font-size: 3.5rem;
-  }
-
-  .card-label {
-    font-size: 0.88rem;
-  }
-
   .logo-light-system {
     width: 155px;
     height: 155px;
@@ -738,11 +944,49 @@ button {
     padding: 0.65rem 0.85rem;
   }
 
+  .menu-header h2 {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+  }
+
+  .menu-header p {
+    font-size: 0.96rem;
+  }
+
+  .round-select-card {
+    min-height: 220px;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .round-select-pill {
+    width: 136px;
+    height: 40px;
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+
+  .round-select-card h3 {
+    font-size: 1.9rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .round-select-card p {
+    font-size: 0.95rem;
+  }
+
   .massive-timer {
     font-size: clamp(4.8rem, 18vw, 7rem);
   }
 
   .time-adjust-wrap {
     justify-content: center;
+  }
+
+  .question-title-only {
+    font-size: 1rem;
+  }
+
+  .round-detail-head h3 {
+    font-size: 1.5rem;
   }
 }
