@@ -18,12 +18,15 @@ const semifinalQuestions = [
 
 const finalQuestions = [
   {
-    title: "Câu hỏi video số 1",
+    
     videoSrc: "/videos/ck1.mp4",
+    caption:
+      "Bi kịch sau tay lái: Lỗi lầm thuộc về 'Chiếc chìa khóa trao sai tay' của cha mẹ hay 'Tay lái bất chấp' của người trẻ?",
   },
   {
-    title: "Câu hỏi video số 2",
     videoSrc: "/videos/ck2.mp4",
+    caption:
+      "Giữa một bên là ý định cứu giúp và một bên là quyền bất khả xâm phạm về đời tư, hành động của Bình là tình thế cấp thiết hay là vượt qua lằn ranh pháp luật?",
   },
 ];
 
@@ -123,7 +126,6 @@ export default function App() {
     setTimeLeft(minutes * 60 + seconds);
     setRunning(false);
   }
-
   function openSemifinalQuestion(question, order) {
     setSelectedQuestion({
       round: "semifinal",
@@ -142,6 +144,7 @@ export default function App() {
       order,
       title: question.title,
       videoSrc: question.videoSrc,
+      caption: question.caption,
       isVideo: true,
     });
     setView("arena");
@@ -340,20 +343,30 @@ export default function App() {
               </div>
 
               {selectedQuestion.isVideo ? (
-                <div className="final-video-wrap">
-                  <div className="final-video-title">
-                    {selectedQuestion.title}
+                <>
+                  <div className="final-video-wrap">
+                    {selectedQuestion.title && (
+                      <div className="final-video-title">
+                        {selectedQuestion.title}
+                      </div>
+                    )}
+
+                    <video controls className="final-video-player">
+                      <source src={selectedQuestion.videoSrc} type="video/mp4" />
+                      Trình duyệt không hỗ trợ video.
+                    </video>
                   </div>
-                  <video controls className="final-video-player">
-                    <source src={selectedQuestion.videoSrc} type="video/mp4" />
-                    Trình duyệt không hỗ trợ video.
-                  </video>
-                </div>
+
+                  {selectedQuestion.caption && (
+                    <p className="video-caption wide-caption">
+                      {selectedQuestion.caption}
+                    </p>
+                  )}
+                </>
               ) : (
                 <h2 className="arena-question">{selectedQuestion.text}</h2>
               )}
             </div>
-
             <div className="arena-center">
               <div className={`massive-timer ${timeLeft <= 10 ? "pulse-danger" : ""}`}>
                 {formatTime(timeLeft)}
